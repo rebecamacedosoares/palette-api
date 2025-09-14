@@ -14,4 +14,4 @@ COPY --from=build /app/target/*.jar app.jar
 
 EXPOSE 8080
 
-ENTRYPOINT ["sh", "-c", "echo \"DEBUG: A URL do banco recebida é -> [$SPRING_DATASOURCE_URL]\" && java -jar -Dspring.profiles.active=prod app.jar"]
+ENTRYPOINT ["sh", "-c", "java -jar -Dspring.profiles.active=prod -Dspring.datasource.url=\"jdbc:${SPRING_DATASOURCE_URL}?currentSchema=palette_schema\" app.jar"]
