@@ -14,4 +14,4 @@ COPY --from=build /app/target/*.jar app.jar
 
 EXPOSE 8080
 
-ENTRYPOINT ["sh", "-c", "java -jar -Dspring.profiles.active=prod -Dspring.datasource.url=\"jdbc:${SPRING_DATASOURCE_URL}?currentSchema=palette_schema\" app.jar"]
+ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=prod", "app.jar"]
